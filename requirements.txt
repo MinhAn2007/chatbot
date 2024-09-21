@@ -1,0 +1,8 @@
+flask==3.0.3
+flask-cors==4.0.1
+python-dotenv==1.0.1
+langchain-core==0.2.33
+langchain-google-genai==1.0.10
+langchain-chroma==0.1.4
+langchain-community==0.2.12
+pypdf==4.3.1
