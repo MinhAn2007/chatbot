@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "./RAG_main.py",
+            "src": "./index.py",
             "use": "@vercel/python"
         }
     ],
@@ -11,3 +11,5 @@
             "src": "/(.*)",
             "dest": "/"
         }
+    ]
+}
