@@ -2,17 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "RAG_main.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "src": "api/RAG_main.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/ask",
-      "dest": "RAG_main.py"
+      "src": "/(.*)",
+      "dest": "api/RAG_main.py"
     }
   ]
 }
