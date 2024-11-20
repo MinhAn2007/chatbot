@@ -1,127 +1,89 @@
 import os
-
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores.utils import filter_complex_metadata
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-# Load environment variables from .env file
 load_dotenv()
+API_KEY = os.getenv("GOOGLE_API_KEY")
 
-# Set OpenAI API key
-api_key = os.getenv("GOOGLE_API_KEY")
-if not api_key:
-    raise ValueError("OpenAI API key not found in environment variables")
-
-# Initialize  
 app = Flask(__name__)
-CORS(app, resources={r"/ask": {"origins": "*"}, r"/ask": {"origins": "*"}})
-
-llm_model = "gemini-1.5-flash-latest"  # Set this to "gemini-1.5" once available
-
-# Initialize LangChain components
-llm = ChatGoogleGenerativeAI(api_key=api_key, model=llm_model, temperature=0, streaming=True)
-
-# Define a prompt to be used by the LLM
-prompt = PromptTemplate.from_template(
-            """
-            <s> [INST] You are an assistant for question-answering tasks. Use the following pieces of retrieved
-            context to answer the question.   
- If you don't know the answer, just say that you don't know.   
-
-            Keep your answer straight forward and concise. No yapping! [/INST] </s>
-            [INST] Question: {question}
-            Context: {context}
-            Answer: [/INST]
-            """
-)
-
-prompt2 = PromptTemplate.from_template(
-    """
-     <s> [INST] You are an assistant for question-answering tasks. Answer the question based on your own knowledge.
-     If you don't know the answer, just say that you don't know. Keep your answer straightforward and concise. No yapping! [/INST] </s>
-     [INST] Question: {question}
-     Context: {context}
-     Answer: [/INST]
-     """
-)
-
-# Load a PDF file
-docs = PyPDFLoader(file_path="document/data.pdf").load()
-
-# Initialize text splitter
-text_splitter = RecursiveCharacterTextSplitter(
-       chunk_size=1024,
-       chunk_overlap=100
-)
-
-# Split doc into smaller chunks of text
-chunks = text_splitter.split_documents(docs)
-
-chunks = filter_complex_metadata(chunks)
-
-vectorstore = Chroma.from_documents(documents=chunks, embedding=GoogleGenerativeAIEmbeddings(model="models/embedding-001"))
-
-# Retrieve and generate using the relevant snippets of the blog.
-retriever = vectorstore.as_retriever(
-
-            search_type='similarity',
-            search_kwargs={
-                'k': 3,
-            },
-)
-
-rag_chain = (
-    {"context": retriever, "question": RunnablePassthrough()}
-    | prompt2
-    | llm
-    | StrOutputParser()
-)
+CORS(app, resources={r"/ask": {"origins": "*"}})
 
 
-def ask_question(question):
-    if not question:
-        return jsonify({"error": "No question provided"}), 400
+def load_pdf_chunks():
+    loader = PyPDFLoader("https://fashionandl.s3.ap-southeast-1.amazonaws.com/zalo/data.pdf")
+    docs = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=50,
+        length_function=len
+    )
+    return text_splitter.split_documents(docs)
 
-    # Invoke RAG chain with the provided question
-    response = rag_chain.invoke(question)
 
-    return jsonify({"question": question, "answer": response})
+def create_vectorstore(chunks):
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=API_KEY
+    )
+    return Chroma.from_documents(documents=chunks, embedding=embeddings)
 
-def lambda_handler(event, context):
-    query = event.get("question")
-    response = ask_question(query)
-    print("response:", response)
-    return {"body": response, "statusCode": 200}
+
+def create_rag_chain(vectorstore):
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-1.5-flash-latest",
+        google_api_key=API_KEY,
+        temperature=0
+    )
+    retriever = vectorstore.as_retriever(search_kwargs={'k': 3})
+    prompt = PromptTemplate.from_template(
+        """Answer the question based strictly on the context. 
+        If you can't find the answer, say "I don't know".
+        Question: {question}
+        Context: {context}
+        Answer:"""
+    )
+    return (
+            {"context": retriever, "question": RunnablePassthrough()}
+            | prompt
+            | llm
+            | StrOutputParser()
+    )
+
+
+# Global variable to store vectorstore
+VECTORSTORE = None
+
 
 @app.route('/ask', methods=['POST'])
 def ask_question():
+    global VECTORSTORE
+
     data = request.json
     question = data.get('question')
 
     if not question:
         return jsonify({"error": "No question provided"}), 400
 
-    # Invoke RAG chain with the provided question
-    response = rag_chain.invoke(question)
+    try:
+        # Create vectorstore only once
+        if VECTORSTORE is None:
+            chunks = load_pdf_chunks()
+            VECTORSTORE = create_vectorstore(chunks)
 
-    return jsonify({"question": question, "answer": response})
-
-@app.get("/hello")
-async def hello():
-    return  {"message": "Test ok!!"}
+        rag_chain = create_rag_chain(VECTORSTORE)
+        response = rag_chain.invoke(question)
+        return jsonify({"answer": response})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
-
-    def handler(event, context):
-        return app
