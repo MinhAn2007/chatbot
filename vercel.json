@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "api/RAG_main.py",
-      "use": "@vercel/python@0.5.3"
+      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -11,8 +11,5 @@
       "src": "/(.*)",
       "dest": "api/RAG_main.py"
     }
-  ],
-  "env": {
-    "PYTHON_VERSION": "3.9"
-  }
+  ]
 }
