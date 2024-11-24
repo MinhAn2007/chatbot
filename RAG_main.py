@@ -45,7 +45,7 @@ def create_rag_chain(vectorstore):
     retriever = vectorstore.as_retriever(search_kwargs={'k': 2})  # Reduced retrieval
     prompt = PromptTemplate.from_template(
         """Answer the question based strictly on the context. 
-        If you can't find the answer, say "I don't know".
+        If you can't find the answer, say "Xin lỗi tôi không thể hỗ trợ bạn việc này , xin vui lòng liên hệ trực tiếp zalo : 0837710747 hoặc gmail: voongocminhan20072002@gmail.com để biết thêm chi tiết".
         Question: {question}
         Context: {context}
         Answer:"""
