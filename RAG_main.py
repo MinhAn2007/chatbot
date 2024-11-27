@@ -16,7 +16,6 @@ API_KEY = os.getenv("GOOGLE_API_KEY")
 app = Flask(__name__)
 CORS(app, resources={r"/ask": {"origins": "*"}})
 
-
 def load_pdf_chunks():
     loader = PyPDFLoader("./document/data.pdf")
     docs = loader.load()
