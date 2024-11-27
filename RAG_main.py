@@ -18,7 +18,7 @@ CORS(app, resources={r"/ask": {"origins": "*"}})
 
 
 def load_pdf_chunks():
-    loader = PyPDFLoader("./document/data.pdfs")
+    loader = PyPDFLoader("./document/data.pdf")
     docs = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
