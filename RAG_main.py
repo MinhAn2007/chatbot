@@ -44,11 +44,11 @@ def create_rag_chain(vectorstore):
     )
     retriever = vectorstore.as_retriever(search_kwargs={'k': 3})
     prompt = PromptTemplate.from_template(
-        """Trả lời câu hỏi dựa trên nội dung đã cung cấp. 
-        Nếu không tìm được câu trả lời, hãy nói: "Xin lỗi tôi không thể hỗ trợ bạn việc này, vui lòng liên hệ trực tiếp Zalo: 0837710747 hoặc Gmail: voongocminhan20072002@gmail.com để được hỗ trợ thêm."
-        Câu hỏi: {question}
-        Nội dung: {context}
-        Câu trả lời:"""
+        """Answer the question based strictly on the context. 
+        If you can't find the answer, say "Xin lỗi tôi không thể hỗ trợ bạn việc này , xin vui lòng liên hệ trực tiếp zalo : 0837710747 hoặc gmail : voongocminhan20072002@gmail.com để biết thêm chi tiết"
+        Question: {question}
+        Context: {context}
+        Answer:"""
     )
     return (
             {"context": retriever, "question": RunnablePassthrough()}
@@ -70,9 +70,10 @@ def ask_question():
     question = data.get('question')
 
     if not question:
-        return jsonify({"error": "Không có câu hỏi được cung cấp"}), 400
+        return jsonify({"error": "No question provided"}), 400
 
     try:
+        # Create vectorstore only once
         if VECTORSTORE is None:
             chunks = load_pdf_chunks()
             VECTORSTORE = create_vectorstore(chunks)
