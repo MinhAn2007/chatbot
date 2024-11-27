@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="tesst new">
+    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="change to get from s3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RAG_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RAG_main.py" afterDir="false" />
     </list>
@@ -15,6 +15,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -22,12 +23,12 @@
     &quot;assignee&quot;: &quot;MinhAn2007&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MinhAn2007/chatbot.git&quot;,
-    &quot;accountId&quot;: &quot;b5fc4e72-4b44-47b8-ac23-79c494e47754&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MinhAn2007/chatbot.git",
+    "accountId": "07c8574a-bf0b-4fbc-abaf-8bfd074c9d5b"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
