@@ -231,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732500065270</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="change to get from s3">
+      <option name="closed" value="true" />
+      <created>1732724243238</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1732724243238</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,6 +262,7 @@
     <MESSAGE value="tesst" />
     <MESSAGE value="update bot" />
     <MESSAGE value="tesst new" />
-    <option name="LAST_COMMIT_MESSAGE" value="tesst new" />
+    <MESSAGE value="change to get from s3" />
+    <option name="LAST_COMMIT_MESSAGE" value="change to get from s3" />
   </component>
 </project>

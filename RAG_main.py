@@ -33,7 +33,7 @@ def create_vectorstore(chunks):
         model="models/embedding-001",
         google_api_key=API_KEY
     )
-    return Chroma.from_documents(documents=chunks, embedding=embeddings)
+    return Chroma.from_documents(documents=chunks, embedding=embeddings,persist_directory="./chroma_db")
 
 
 def create_rag_chain(vectorstore):
