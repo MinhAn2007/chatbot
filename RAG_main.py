@@ -18,7 +18,7 @@ CORS(app, resources={r"/ask": {"origins": "*"}})
 
 
 def load_pdf_chunks():
-    loader = PyPDFLoader("https://fashionandl.s3.ap-southeast-1.amazonaws.com/zalo/data.pdf")
+    loader = PyPDFLoader("./document/data.pdfs")
     docs = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
