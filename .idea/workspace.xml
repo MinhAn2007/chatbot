@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="update bot">
+    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="update pdf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RAG_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RAG_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document/data.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/document/data.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732701516807</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="update pdf">
+      <option name="closed" value="true" />
+      <created>1732701761827</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1732701761827</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,6 +287,7 @@
     <MESSAGE value="revert" />
     <MESSAGE value="respone auto Vietnamese" />
     <MESSAGE value="update bot" />
-    <option name="LAST_COMMIT_MESSAGE" value="update bot" />
+    <MESSAGE value="update pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pdf" />
   </component>
 </project>
