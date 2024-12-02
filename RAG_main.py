@@ -44,12 +44,13 @@ def create_rag_chain(vectorstore):
     )
     retriever = vectorstore.as_retriever(search_kwargs={'k': 3})
     prompt = PromptTemplate.from_template(
-        """Trả lời câu hỏi dựa trên nội dung đã cung cấp. 
+        """Trả lời câu hỏi dựa trên nội dung đã cung cấp. Nếu không tìm thấy trong nội dung, hãy trả lời dựa trên kiến thức cơ bản.
         Nếu không tìm được câu trả lời, hãy nói: "Xin lỗi tôi không thể hỗ trợ bạn việc này, vui lòng liên hệ trực tiếp Zalo: 0837710747 hoặc Gmail: voongocminhan20072002@gmail.com để được hỗ trợ thêm."
         Câu hỏi: {question}
         Nội dung: {context}
         Câu trả lời:"""
     )
+
     return (
             {"context": retriever, "question": RunnablePassthrough()}
             | prompt

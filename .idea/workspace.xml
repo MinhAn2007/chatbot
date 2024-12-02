@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="change to get from s3">
+    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="handle error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RAG_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RAG_main.py" afterDir="false" />
     </list>
@@ -23,12 +23,12 @@
     &quot;assignee&quot;: &quot;MinhAn2007&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MinhAn2007/chatbot.git",
-    "accountId": "07c8574a-bf0b-4fbc-abaf-8bfd074c9d5b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MinhAn2007/chatbot.git&quot;,
+    &quot;accountId&quot;: &quot;07c8574a-bf0b-4fbc-abaf-8bfd074c9d5b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -239,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732724243238</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="handle error">
+      <option name="closed" value="true" />
+      <created>1732724833995</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732724833995</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,6 +271,7 @@
     <MESSAGE value="update bot" />
     <MESSAGE value="tesst new" />
     <MESSAGE value="change to get from s3" />
-    <option name="LAST_COMMIT_MESSAGE" value="change to get from s3" />
+    <MESSAGE value="handle error" />
+    <option name="LAST_COMMIT_MESSAGE" value="handle error" />
   </component>
 </project>
