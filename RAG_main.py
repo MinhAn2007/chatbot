@@ -130,7 +130,7 @@ def create_rag_chain(vectorstore):
         )
         retriever = vectorstore.as_retriever(search_kwargs={'k': 10})
         prompt = PromptTemplate.from_template(
-            """Hãy trả lời câu hỏi một cách chi tiết và chính xác dựa trên nội dung được cung cấp. 
+            """Hãy trả lời câu hỏi một cách chi tiết và chính xác dựa trên nội dung được cung cấp. Nếu không tìm thấy trong nội dung, hãy trả lời dựa trên kiến thức bên ngoài
             Làm theo các nguyên tắc sau:
             - Cung cấp thông tin chi tiết như tên sản phẩm, mô tả sản phẩm, màu sắc có sẵn, kích thước có sẵn và đường dẫn mua hàng của sản phẩm.
             - Nếu sản phẩm có nhiều tùy chọn màu sắc hoặc kích thước, hãy liệt kê tất cả các tùy chọn có sẵn.
