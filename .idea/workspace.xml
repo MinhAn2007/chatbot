@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="get data from API">
+    <list default="true" id="d01e9121-65dd-42c4-9349-57a8fbce6dc9" name="Changes" comment="add more knowlegde">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RAG_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RAG_main.py" afterDir="false" />
     </list>
@@ -263,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733675408551</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="add more knowlegde">
+      <option name="closed" value="true" />
+      <created>1733756729289</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733756729289</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -288,8 +296,8 @@
     <MESSAGE value="tesst new" />
     <MESSAGE value="change to get from s3" />
     <MESSAGE value="handle error" />
-    <MESSAGE value="add more knowlegde" />
     <MESSAGE value="get data from API" />
-    <option name="LAST_COMMIT_MESSAGE" value="get data from API" />
+    <MESSAGE value="add more knowlegde" />
+    <option name="LAST_COMMIT_MESSAGE" value="add more knowlegde" />
   </component>
 </project>
